@@ -1,3 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.custom-navbar {
+    background-color: #4682B4; /* Cor de fundo desejada */
+}
+
+.custom-bg {
+    background-color: lightblue; /* Altere para a cor desejada */
+    color: black; /* Cor do texto */
+}
+
+.custom-bg:hover {
+    background-color: deepskyblue; /* Cor ao passar o mouse */
+    color: white; /* Cor do texto ao passar o mouse */
+}
