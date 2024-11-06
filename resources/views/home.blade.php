@@ -30,7 +30,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">${character.name}</h5>
                                 <p class="card-text">Status: ${character.status}</p>
-                                <a href="/characters/${character.id}" class="btn btn-primary">Detalhes</a>
+                                <a href="{{ route('characters.show', '') }}/${character.id}" class="btn btn-primary">Detalhes</a>
                             </div>
                         </div>
                     </div>
