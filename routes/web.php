@@ -3,13 +3,30 @@
 use App\Http\Controllers\RickAndMortyController;
 
 Route::get('/', [RickAndMortyController::class, 'home'])->name('home');
+
 Route::get('/personagens', [RickAndMortyController::class, 'characters'])->name('characters');
+
 Route::get('/sobre', [RickAndMortyController::class, 'about'])->name('about');
+
+// Rota para exibir o formulário de login (método GET)
 Route::get('/login', [RickAndMortyController::class, 'login'])->name('login');
-Route::get('/register', [RickAndMortyController::class, 'register'])->name('register');
+
+// Rota para processar o login do usuário (método POST)
+Route::post('/login', [RickAndMortyController::class, 'authenticate'])->name('login.authenticate');
+
+// Rota para logout
+Route::post('/logout', [RickAndMortyController::class, 'logout'])->name('logout');
+
+// Rota para exibir o formulário de cadastro
+Route::get('/cadastro', [RickAndMortyController::class, 'register'])->name('register');
+
+// Rota para processar o cadastro do usuário (método POST)
+Route::post('/cadastro', [RickAndMortyController::class, 'storeUser'])->name('register.store');
 
 // Rota para exibir todos os personagens
-Route::get('/characters', [RickAndMortyController::class, 'index'])->name('character.index');
+Route::get('/characters', [RickAndMortyController::class, 'index'])
+    ->middleware('auth') // Protege a rota de personagens
+    ->name('character.index');
 
 // Rota para exibir o personagem individual
 // Route::get('/characters/{id}', [RickAndMortyController::class, 'show'])->name('character.show');

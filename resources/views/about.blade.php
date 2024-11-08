@@ -15,23 +15,15 @@
             <h2 class="mt-4 animated fadeInUp" style="animation-delay: 0.9s; color: #343a40;">Experiência e Projetos</h2>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item animated fadeInUp" style="animation-delay: 1s; border: 2px solid #007bff; border-radius: 8px; background-color: #f8f9fa;">
-                    <strong class="text-primary">Desenvolvedor Backend (PHP e Laravel)</strong> - Empresa XYZ
-                    <p>Trabalhei em diversos projetos com PHP, criando APIs e integrando sistemas para melhorar a eficiência das operações.</p>
-                </li>
-                <li class="list-group-item animated fadeInUp" style="animation-delay: 1.2s; border: 2px solid #007bff; border-radius: 8px; background-color: #f8f9fa;">
-                    <strong class="text-primary">Projeto Pessoal: Sistema de Gerenciamento de Tarefas</strong>
-                    <p>Desenvolvi um sistema completo de gerenciamento de tarefas usando Laravel e Vue.js, com funcionalidades como CRUD, autenticação e notificações.</p>
+                    <strong class="text-primary" style="font-size: 1.1rem; color: #007bff;">Desenvolvedor Backend (PHP e Laravel)</strong> - 
+                    <span class="badge bg-warning text-dark" style="font-size: 1.2rem; padding: 0.5rem 1rem; border-radius: 8px;">Amee Gestão de Energia</span>
+                    <p>Desenvolvi e mantive códigos essenciais para extração e carregamento de dados, garantindo a integridade e eficiência dos processos. Colaborei com equipes multidisciplinares para definir requisitos e soluções técnicas, contribuindo para entregas de projetos dentro do prazo e orçamento.</p>
                 </li>
             </ul>
 
             <div class="mt-4">
                 <h3 class="animated fadeInUp" style="animation-delay: 1.4s; color: #343a40;">Links dos Projetos</h3>
                 <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item">
-                        <a href="https://github.com/seuusuario/projeto1" target="_blank" class="btn btn-lg btn-primary animated fadeInUp" style="animation-delay: 1.6s; box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); transition: all 0.3s ease;">
-                            Projeto 1 no GitHub
-                        </a>
-                    </li>
                     <li class="list-group-item">
                         <a href="https://github.com/samuelvieira-dev" target="_blank" class="btn btn-lg btn-dark animated fadeInUp" style="animation-delay: 1.8s; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;">
                             Meu Portfólio
@@ -42,7 +34,7 @@
         </div>
 
         <div class="col-lg-6 text-center">
-            <img src="https://via.placeholder.com/400" alt="Foto do Desenvolvedor" class="img-fluid rounded-circle animated fadeInUp" style="animation-delay: 2s; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);">
+            <img src="{{ asset('images/minha-foto.jpg') }}" alt="Foto do Desenvolvedor" class="img-fluid rounded-circle animated fadeInUp" style="animation-delay: 2s; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);">
         </div>
     </div>
 </div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Character;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RickAndMortyController extends Controller
 {
@@ -29,12 +31,13 @@ class RickAndMortyController extends Controller
         return view('about');
     }
 
-    public function login() {
-        return view('auth.login');
-    }
-
     public function register() {
         return view('auth.register');
+    }
+
+    public function login()
+    {
+        return view('auth.login');
     }
 
     public function getCharacters() {
@@ -50,9 +53,16 @@ class RickAndMortyController extends Controller
     
         return view('character.show', compact('character', 'savedCharacter'));
     }
-    
 
+    
     public function store(Request $request){
+
+        // Verifica se o usuário está autenticado
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('message', 'Por favor, faça login para salvar um personagem.');
+        }
+
+        // Caso o usuário esteja logado, cria ou encontra o personagem
         $character = Character::firstOrCreate([
             'url' => $request->url,
         ], [
@@ -61,9 +71,33 @@ class RickAndMortyController extends Controller
             'image' => $request->image,
         ]);
 
+        // Redireciona para a página de detalhes do personagem salvo
         return redirect()->route('characters.show', $character->id);
     }
-    
+
+    public function storeUser(Request $request){
+
+        // Validação dos dados do formulário
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Criação do novo usuário
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']), // Criptografar a senha
+        ]);
+
+        // Autenticar o usuário após o cadastro (opcional)
+        Auth::login($user);
+
+        // Redireciona para a página desejada após o cadastro
+        return redirect()->route('home')->with('success', 'Cadastro realizado com sucesso!');
+    }
+
     public function deleteCharacter($id) {
         $character = Character::findOrFail($id);
         $character->delete();
